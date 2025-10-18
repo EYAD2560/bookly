@@ -1,3 +1,4 @@
+import 'package:bookly/Features/Home/presentation/views/widgets/cards/empty_display_card.dart';
 import 'package:bookly/Features/book_details/presntation/views/widgets/details_bar.dart';
 import 'package:bookly/core/asset_data.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -9,11 +10,10 @@ class DetailBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
+
       children: [
         DetailsBar(),
-        const SizedBox(height: 20),
+        const SizedBox(height: 50),
         SizedBox(
           height: 200,
           width: 150,
@@ -22,7 +22,8 @@ class DetailBody extends StatelessWidget {
             fit: BoxFit.fill,
             placeholder: (context, url) =>
                 Container(color: Colors.blueGrey, width: 120, height: 150),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
+            errorWidget: (context, url, error) =>
+                const Icon(Icons.error, color: Colors.white),
           ),
         ),
         const SizedBox(height: 20),
@@ -42,6 +43,8 @@ class DetailBody extends StatelessWidget {
         const SizedBox(height: 10),
         Row(
           children: [
+            const SizedBox(width: 60),
+
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -60,11 +63,11 @@ class DetailBody extends StatelessWidget {
                 ),
               ),
             ),
-             Container(
+            Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(10),
-                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
                 ),
                 color: Colors.white,
               ),
@@ -76,6 +79,33 @@ class DetailBody extends StatelessWidget {
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "You may also like",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            SizedBox(
+              height: 150,
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return EmptyDisplayCard();
+                },
+                scrollDirection: Axis.horizontal,
+                itemCount: 10,
+                shrinkWrap: true,
+                physics: BouncingScrollPhysics(),
               ),
             ),
           ],
