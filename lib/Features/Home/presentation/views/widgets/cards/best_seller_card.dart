@@ -1,18 +1,16 @@
-import 'package:bookly/Features/book_details/presntation/views/details_view.dart';
+import 'package:bookly/constans.dart';
 import 'package:bookly/core/utilty/asset_data.dart';
 import 'package:bookly/core/utilty/font_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class DetailedDisplayCard extends StatelessWidget {
-  const DetailedDisplayCard({super.key});
+class BestSellerCard extends StatelessWidget {
+  const BestSellerCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const DetailsView()),
-      ),
+      onTap: () => context.go('/detailesView'),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: SizedBox(
@@ -33,28 +31,32 @@ class DetailedDisplayCard extends StatelessWidget {
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     maxLines: 2,
-                    overflow: TextOverflow.ellipsis, 
+                    overflow: TextOverflow.ellipsis,
                     'The Jungle Book',
-                    style: Styles.textStyle30,
+                    style: Styles.textStyle30.copyWith(
+                      fontFamily: kGtSectraFine,
+                    ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 3),
                   Text(
                     'by Rudyard Kipling',
-                    style: Styles.textStyle16,
+                    style: Styles.textStyle16.copyWith(color: Colors.white70),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 3),
                   Row(
                     children: [
                       Text(
                         '\$9.99',
-                        style: Styles.textStyle20,
+                        style: Styles.textStyle20.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       SizedBox(width: 100),
                       Icon(Icons.star, color: Colors.amber, size: 20),
-                      SizedBox(width: 2), 
+                      SizedBox(width: 2),
                       Text(
                         '4.5',
                         style: TextStyle(color: Colors.white, fontSize: 16),

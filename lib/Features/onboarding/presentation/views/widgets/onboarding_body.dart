@@ -1,6 +1,6 @@
-import 'package:bookly/Features/Home/presentation/views/home.dart';
 import 'package:bookly/constans.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingScreenBody extends StatelessWidget {
   const OnboardingScreenBody({super.key});
@@ -68,12 +68,7 @@ class OnboardingScreenBody extends StatelessWidget {
 
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomePage(),
-                          ),
-                        );
+                        context.go('/homeView');
                       },
                       child: Container(
                         height: 60,

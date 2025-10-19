@@ -1,6 +1,6 @@
-import 'package:bookly/Features/book_details/presntation/views/details_view.dart';
 import 'package:bookly/core/utilty/asset_data.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class EmptyDisplayCard extends StatelessWidget {
   const EmptyDisplayCard({super.key});
@@ -10,10 +10,9 @@ class EmptyDisplayCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: GestureDetector(
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const DetailsView()),
-        ),
+        // BEFORE: onTap: () => GoRoute(path: '/DetailesView'),
+        // AFTER: navigate using GoRouter
+        onTap: () => context.go('/detailesView'),
         child: Container(
           width: 120,
           height: 150,
@@ -23,11 +22,11 @@ class EmptyDisplayCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Image.asset(
-                  AssetsData.testimage,
-                  fit: BoxFit.fill,
-                  errorBuilder: (context, error, stackTrace) =>
-                      const Icon(Icons.error, color: Colors.white),
-                ),
+            AssetsData.testimage,
+            fit: BoxFit.fill,
+            errorBuilder: (context, error, stackTrace) =>
+                const Icon(Icons.error, color: Colors.white),
+          ),
         ),
       ),
     );

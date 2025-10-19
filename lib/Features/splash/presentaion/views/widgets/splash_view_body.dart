@@ -1,45 +1,73 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:bookly/Features/onboarding/presentation/views/onboarding.dart';
+import 'dart:async';
+
 import 'package:bookly/core/utilty/asset_data.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
+import 'package:go_router/go_router.dart';
 
-class SplashviewBody extends StatelessWidget {
+class SplashviewBody extends StatefulWidget {
   const SplashviewBody({super.key});
 
   @override
+  State<SplashviewBody> createState() => _SplashviewBodyState();
+}
+
+class _SplashviewBodyState extends State<SplashviewBody>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<double> _fade;
+
+  // match your previous splash timings
+  static const int splashDurationMs = 2500;
+  static const int animationDurationMs = 1000;
+
+  Timer? _navTimer;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: animationDurationMs),
+    );
+
+    _fade = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
+
+    // start the fade-in
+    _controller.forward();
+
+    // schedule router navigation after splash duration
+    _navTimer = Timer(const Duration(milliseconds: splashDurationMs), () {
+      if (!mounted) return;
+      // Use GoRouter's declarative API — safe with MaterialApp.router
+      GoRouter.of(context).go('/onboarding');
+    });
+  }
+
+  @override
+  void dispose() {
+    _navTimer?.cancel();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return AnimatedSplashScreen(
-      // Widget displayed during the splash
-      splash: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // App logo
-          Image.asset(AssetsData.logo, height: 120),
-          const SizedBox(height: 20),
-        ],
-      ),
-
-      // Background color of the splash screen
+    return Scaffold(
+      // match your previous background color
       backgroundColor: Colors.black,
-
-      // The screen to navigate to after the splash ends
-      nextScreen: const OnboardingScreen(),
-
-      // Controls the size of the splash widget
-      splashIconSize: 300,
-
-      // Duration the splash stays on screen (in milliseconds)
-      duration: 2500,
-
-      // Duration of the transition animation
-      animationDuration: const Duration(milliseconds: 1000),
-
-      // Type of animation used to show splash content
-      splashTransition: SplashTransition.fadeTransition,
-
-      // Type of transition to switch to the next screen
-      pageTransitionType: PageTransitionType.fade,
+      body: Center(
+        child: FadeTransition(
+          opacity: _fade,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(AssetsData.logo, height: 120),
+              const SizedBox(height: 20),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

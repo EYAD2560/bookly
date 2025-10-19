@@ -23,22 +23,25 @@ class DetailBody extends StatelessWidget {
                 const Icon(Icons.error, color: Colors.white),
           ),
         ),
-        const Text(
+        Text(
           'The Jungle Book',
-          style: Styles.textStyle30,
+          style: Styles.textStyle30.copyWith(fontWeight: FontWeight.bold),
         ),
-        const Text(
+        Text(
           'by Rudyard Kipling',
-          style: TextStyle(color: Colors.white70, fontSize: 20),
+          style: Styles.textStyle20.copyWith(color: Colors.white70),
         ),
-        
+
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon( Icons.star, color: Colors.amber, size: 20),
+            Icon(Icons.star, color: Colors.amber, size: 20),
             SizedBox(width: 2),
-            Text('4.5', style: TextStyle(color: Colors.white, fontSize: 18)),
-            Text(' (200)', style: TextStyle(color: Colors.white70, fontSize: 16)),
+            Text('4.5', style: Styles.textStyle18),
+            Text(
+              ' (200)',
+              style: Styles.textStyle16.copyWith(color: Colors.white70),
+            ),
           ],
         ),
         const SizedBox(height: 10),
@@ -88,11 +91,7 @@ class DetailBody extends StatelessWidget {
           children: [
             const Text(
               "You may also like",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Styles.textStyle20,
             ),
             SizedBox(height: 10),
             SizedBox(

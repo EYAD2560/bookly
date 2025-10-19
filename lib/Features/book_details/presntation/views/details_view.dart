@@ -6,6 +6,8 @@ class DetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(  backgroundColor: Colors.black, body: const DetailBody()));
+    return SafeArea(
+      child: Scaffold(backgroundColor: Colors.black, body: const DetailBody()),
+    );
   }
 }
