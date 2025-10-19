@@ -1,4 +1,4 @@
-import 'package:bookly/Features/Home/presentation/views/widgets/cards/empty_display_card.dart';
+import 'package:bookly/Features/Home/presentation/views/widgets/cards/detailed_display_card.dart';
 import 'package:flutter/material.dart';
 
 class DetailedListView extends StatelessWidget {
@@ -12,7 +12,7 @@ class DetailedListView extends StatelessWidget {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 10),
-              child: EmptyDisplayCard(),
+              child: DetailedDisplayCard(),
             );
           },
           itemCount: 10,

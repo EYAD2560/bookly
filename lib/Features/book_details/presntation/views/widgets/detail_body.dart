@@ -1,6 +1,6 @@
 import 'package:bookly/Features/Home/presentation/views/widgets/cards/empty_display_card.dart';
 import 'package:bookly/Features/book_details/presntation/views/widgets/details_bar.dart';
-import 'package:bookly/core/asset_data.dart';
+import 'package:bookly/core/utilty/asset_data.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
