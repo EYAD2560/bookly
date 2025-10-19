@@ -1,6 +1,5 @@
 import 'package:bookly/Features/book_details/presntation/views/details_view.dart';
 import 'package:bookly/core/utilty/asset_data.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class EmptyDisplayCard extends StatelessWidget {
@@ -8,7 +7,6 @@ class EmptyDisplayCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String imageUrl = AssetsData.testimage;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: GestureDetector(
@@ -24,13 +22,12 @@ class EmptyDisplayCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.3),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: CachedNetworkImage(
-            imageUrl: imageUrl,
-            fit: BoxFit.fill,
-            placeholder: (context, url) =>
-                Container(color: Colors.blueGrey, width: 120, height: 150),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
-          ),
+          child: Image.asset(
+                  AssetsData.testimage,
+                  fit: BoxFit.fill,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.error, color: Colors.white),
+                ),
         ),
       ),
     );

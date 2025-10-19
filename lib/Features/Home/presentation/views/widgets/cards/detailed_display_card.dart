@@ -1,5 +1,6 @@
 import 'package:bookly/Features/book_details/presntation/views/details_view.dart';
 import 'package:bookly/core/utilty/asset_data.dart';
+import 'package:bookly/core/utilty/font_styles.dart';
 import 'package:flutter/material.dart';
 
 class DetailedDisplayCard extends StatelessWidget {
@@ -37,28 +38,19 @@ class DetailedDisplayCard extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis, 
                     'The Jungle Book',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    
-                    ),
+                    style: Styles.textStyle30,
                   ),
                   SizedBox(height: 5),
                   Text(
                     'by Rudyard Kipling',
-                    style: TextStyle(color: Colors.white70, fontSize: 16),
+                    style: Styles.textStyle16,
                   ),
                   SizedBox(height: 5),
                   Row(
                     children: [
                       Text(
                         '\$9.99',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w800,
-                        ),
+                        style: Styles.textStyle20,
                       ),
                       SizedBox(width: 100),
                       Icon(Icons.star, color: Colors.amber, size: 20),
