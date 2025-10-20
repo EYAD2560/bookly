@@ -24,10 +24,7 @@ class DetailsBar extends StatelessWidget {
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.shopping_cart),
-        ),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart)),
       ],
     );
   }
