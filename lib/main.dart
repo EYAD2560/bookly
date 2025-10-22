@@ -12,7 +12,9 @@ class Bookly extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor:  Colors.black,
+      ),
 
       routerConfig: Routes.router,
     );
