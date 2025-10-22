@@ -12,7 +12,7 @@ class SearchBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, ),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Returnbutton(),
         ),
         SizedBox(height: 20),

@@ -15,4 +15,3 @@ class DetailsBar extends StatelessWidget {
     );
   }
 }
-

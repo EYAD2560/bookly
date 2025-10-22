@@ -2,9 +2,7 @@ import 'package:bookly/Features/book_details/presntation/views/widgets/custom_bu
 import 'package:flutter/material.dart';
 
 class ActionButtons extends StatelessWidget {
-  const ActionButtons({
-    super.key,
-  });
+  const ActionButtons({super.key});
 
   @override
   Widget build(BuildContext context) {

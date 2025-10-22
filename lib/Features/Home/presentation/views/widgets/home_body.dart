@@ -19,7 +19,7 @@ class HomeBody extends StatelessWidget {
             const SizedBox(height: 20),
             EmptyListView(),
             SizedBox(height: 20),
-             Text(
+            Text(
               'Best Seller',
               style: Styles.textStyle25.copyWith(fontWeight: FontWeight.bold),
             ),

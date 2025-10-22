@@ -3,20 +3,19 @@ import 'package:bookly/Features/Search/presentaion/views/Search_view.dart';
 import 'package:bookly/Features/book_details/presntation/views/details_view.dart';
 import 'package:bookly/Features/onboarding/presentation/views/onboarding.dart';
 import 'package:bookly/Features/splash/presentaion/views/splashview.dart';
-import 'package:flutter/material.dart' ;
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class Routes {
-
- static final GoRouter router = GoRouter(
-    routes:[
+  static final GoRouter router = GoRouter(
+    routes: [
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
           return const SplashView();
         },
       ),
-       GoRoute(
+      GoRoute(
         path: '/onboarding',
         builder: (BuildContext context, GoRouterState state) {
           return const OnboardingScreen();

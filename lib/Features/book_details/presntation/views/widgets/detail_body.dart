@@ -32,7 +32,7 @@ class DetailBody extends StatelessWidget {
           'by Rudyard Kipling',
           style: Styles.textStyle20.copyWith(color: Colors.white70),
         ),
-    
+
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -51,7 +51,10 @@ class DetailBody extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             Text("You may also like", style: Styles.textStyle20.copyWith(fontWeight: FontWeight.bold)),
+            Text(
+              "You may also like",
+              style: Styles.textStyle20.copyWith(fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 10),
             SizedBox(
               height: 150,
@@ -71,4 +74,3 @@ class DetailBody extends StatelessWidget {
     );
   }
 }
-

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class Returnbutton extends StatelessWidget {
-  const Returnbutton({
-    super.key,
-  });
+  const Returnbutton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +14,7 @@ class Returnbutton extends StatelessWidget {
           Navigator.of(context).pop();
           return;
         }
-    
+
         // If there's nothing to pop (root), navigate to a safe route using GoRouter.
         // Adjust '/' to your preferred fallback (e.g., '/homeView').
         GoRouter.of(context).go('/homeView');
