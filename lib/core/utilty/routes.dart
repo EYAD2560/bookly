@@ -1,5 +1,5 @@
 import 'package:bookly/Features/Home/presentation/views/home.dart';
-import 'package:bookly/Features/Search/presentaion/views/S/search_view.dart';
+import 'package:bookly/Features/Search/presentaion/views/search_view.dart';
 import 'package:bookly/Features/book_details/presntation/views/details_view.dart';
 import 'package:bookly/Features/onboarding/presentation/views/onboarding.dart';
 import 'package:bookly/Features/splash/presentaion/views/splashview.dart';
