@@ -60,7 +60,7 @@ class DetailBody extends StatelessWidget {
               height: 150,
               child: ListView.builder(
                 itemBuilder: (context, index) {
-                  return FeaturedBooksDisplayCard();
+                  return FeaturedBooksDisplayCard(imageUrl: '',);
                 },
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
