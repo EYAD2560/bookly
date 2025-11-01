@@ -2,8 +2,8 @@ import 'package:bookly/core/utilty/asset_data.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class EmptyDisplayCard extends StatelessWidget {
-  const EmptyDisplayCard({super.key});
+class FeaturedBooksDisplayCard extends StatelessWidget {
+  const FeaturedBooksDisplayCard({super.key});
 
   @override
   Widget build(BuildContext context) {
