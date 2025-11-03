@@ -1,12 +1,13 @@
+import 'package:bookly/Features/Home/data/book_model/book_model.dart';
 import 'package:bookly/constans.dart';
-import 'package:bookly/core/utilty/asset_data.dart';
 import 'package:bookly/core/utilty/font_styles.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerCard extends StatelessWidget {
-  const BestSellerCard({super.key});
-
+  const BestSellerCard({super.key, required this.book});
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,11 +22,11 @@ class BestSellerCard extends StatelessWidget {
               SizedBox(
                 height: double.infinity,
                 width: 100,
-                child: Image.asset(
-                  AssetsData.testimage,
-                  fit: BoxFit.fill,
-                  errorBuilder: (context, error, stackTrace) =>
-                      const Icon(Icons.error, color: Colors.white),
+                child: CachedNetworkImage(
+                  imageUrl: book.volumeInfo?.imageLinks?.thumbnail ?? '',
+                  placeholder: (context, url) =>
+                      Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
               const SizedBox(width: 10),
@@ -35,21 +36,21 @@ class BestSellerCard extends StatelessWidget {
                   Text(
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    'The Jungle Book',
+                    book.volumeInfo?.title ?? 'Unknown',
                     style: Styles.textStyle30.copyWith(
                       fontFamily: kGtSectraFine,
                     ),
                   ),
                   SizedBox(height: 3),
                   Text(
-                    'by Rudyard Kipling',
+                    book.volumeInfo?.authors?.first ?? 'Unknown',
                     style: Styles.textStyle16.copyWith(color: Colors.white70),
                   ),
                   SizedBox(height: 3),
                   Row(
                     children: [
                       Text(
-                        '\$9.99',
+                        'Free',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -58,11 +59,13 @@ class BestSellerCard extends StatelessWidget {
                       Icon(Icons.star, color: Colors.amber, size: 20),
                       SizedBox(width: 2),
                       Text(
-                        '4.5',
+                        book.volumeInfo?.averageRating?.toString() ?? '0',
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       Text(
-                        ' (200)',
+                        book.volumeInfo?.ratingsCount != null
+                            ? ' (${book.volumeInfo?.ratingsCount})'
+                            : ' (0)',
                         style: TextStyle(color: Colors.white70, fontSize: 16),
                       ),
                     ],

@@ -19,7 +19,7 @@ class FeaturedBooksListView extends StatelessWidget {
           return Center(
             child: Text(
               state.errorMessage,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.red),
             ),
           );
         }
@@ -42,7 +42,6 @@ class FeaturedBooksListView extends StatelessWidget {
             ),
           );
         }
-
         return const SizedBox(
           height: 200,
           child: Center(child: Text('No data')),
