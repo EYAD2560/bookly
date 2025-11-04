@@ -48,7 +48,7 @@ class DetailBody extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10), 
-        ActionButtons(),
+        ActionButtons(book: book,),
         const SizedBox(height: 10),
         SimilarBooksSection(),
       ],
