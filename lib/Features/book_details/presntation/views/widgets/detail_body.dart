@@ -1,13 +1,14 @@
-import 'package:bookly/Features/Home/presentation/views/widgets/cards/featured_display_card.dart';
+import 'package:bookly/Features/Home/data/book_model/book_model.dart';
 import 'package:bookly/Features/book_details/presntation/views/widgets/action_button.dart';
 import 'package:bookly/Features/book_details/presntation/views/widgets/details_bar.dart';
-import 'package:bookly/core/utilty/asset_data.dart';
+import 'package:bookly/Features/book_details/presntation/views/widgets/sections/similar.dart';
 import 'package:bookly/core/utilty/font_styles.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class DetailBody extends StatelessWidget {
-  const DetailBody({super.key});
-
+  const DetailBody({super.key, required this.book});
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,19 +18,20 @@ class DetailBody extends StatelessWidget {
         SizedBox(
           height: 300,
           width: 200,
-          child: Image.asset(
-            AssetsData.testimage,
-            fit: BoxFit.fill,
-            errorBuilder: (context, error, stackTrace) =>
-                const Icon(Icons.error, color: Colors.white),
+          child: CachedNetworkImage(
+            imageUrl: book.volumeInfo?.imageLinks?.thumbnail ?? '',
+            placeholder: (context, url) =>
+                Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) => Icon(Icons.error),
           ),
         ),
         Text(
-          'The Jungle Book',
+          book.volumeInfo?.title ?? 'Unknown',
           style: Styles.textStyle30.copyWith(fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
         ),
         Text(
-          'by Rudyard Kipling',
+          book.volumeInfo?.authors?.first ?? 'Unknown',
           style: Styles.textStyle20.copyWith(color: Colors.white70),
         ),
 
@@ -38,38 +40,17 @@ class DetailBody extends StatelessWidget {
           children: [
             Icon(Icons.star, color: Colors.amber, size: 20),
             SizedBox(width: 2),
-            Text('4.5', style: Styles.textStyle18),
+            Text(book.volumeInfo?.averageRating as String, style: Styles.textStyle18),
             Text(
-              ' (200)',
+              ' (${book.volumeInfo?.ratingsCount ?? '0'})',
               style: Styles.textStyle16.copyWith(color: Colors.white70),
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 10), 
         ActionButtons(),
         const SizedBox(height: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "You may also like",
-              style: Styles.textStyle20.copyWith(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              height: 150,
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return FeaturedBooksDisplayCard(imageUrl: '',);
-                },
-                scrollDirection: Axis.horizontal,
-                itemCount: 10,
-                shrinkWrap: true,
-                physics: BouncingScrollPhysics(),
-              ),
-            ),
-          ],
-        ),
+        SimilarBooksSection(),
       ],
     );
   }

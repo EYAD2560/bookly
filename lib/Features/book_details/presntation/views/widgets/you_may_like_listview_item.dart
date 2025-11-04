@@ -1,18 +1,16 @@
-import 'package:bookly/Features/Home/data/book_model/book_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class FeaturedBooksDisplayCard extends StatelessWidget {
-  const FeaturedBooksDisplayCard({super.key, required this.book});
-  final BookModel book;
+class YouMayLikeListViewItem extends StatelessWidget {
+  const YouMayLikeListViewItem({super.key, required this.imageUrl});
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: GestureDetector(
-            onTap: () =>  GoRouter.of(context).go('/detailesView', extra: book), 
-
+        onTap: () => context.go('/detailesView'),
         child: Container(
           width: 120,
           height: 150,
@@ -22,7 +20,7 @@ class FeaturedBooksDisplayCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: CachedNetworkImage(
-            imageUrl: book.volumeInfo?.imageLinks?.thumbnail ?? '',
+            imageUrl: imageUrl,
             placeholder: (context, url) =>
                 Center(child: CircularProgressIndicator()),
             errorWidget: (context, url, error) => Icon(Icons.error),

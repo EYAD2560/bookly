@@ -23,7 +23,10 @@ class _DetailsViewState extends State<DetailsView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(backgroundColor: Colors.black, body: const DetailBody()),
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: DetailBody(book: widget.book),
+      ),
     );
   }
 }

@@ -33,11 +33,7 @@ class FeaturedBooksListView extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return FeaturedBooksDisplayCard(
-                  imageUrl:
-                      state.books[index].volumeInfo?.imageLinks?.thumbnail ??
-                      '',
-                );
+                return FeaturedBooksDisplayCard(book: state.books[index]);
               },
             ),
           );
