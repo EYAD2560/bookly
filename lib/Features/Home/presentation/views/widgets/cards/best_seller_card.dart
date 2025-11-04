@@ -11,7 +11,7 @@ class BestSellerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.go('/detailesView'),
+      onTap: () =>  GoRouter.of(context).go('/detailesView', extra: book), 
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: SizedBox(
